@@ -1,20 +1,21 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('');
-  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false)
+  const [activeLink, setActiveLink] = useState('')
+  const router = useRouter()
 
   const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+    setIsOpen(!isOpen)
+  }
 
   const handleNavigation = (path: any) => {
-    router.push(path);
-    setIsOpen(false);
-    setActiveLink(path);
-  };
+    router.push(path)
+    setIsOpen(false)
+    setActiveLink(path)
+  }
 
   return (
     <header className="bg-gradient-to-r from-purple-500 to-blue-500">
@@ -24,8 +25,8 @@ const Header = () => {
             href="/"
             className="text-white font-bold text-lg"
             onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/');
+              e.preventDefault()
+              handleNavigation('/')
             }}
           >
             DappLottery
@@ -39,8 +40,8 @@ const Header = () => {
               activeLink === '/docs' ? 'text-gray-300' : ''
             }`}
             onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/docs');
+              e.preventDefault()
+              handleNavigation('/docs')
             }}
           >
             Home
@@ -51,8 +52,8 @@ const Header = () => {
               activeLink === '/examples' ? 'text-gray-300' : ''
             }`}
             onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/examples');
+              e.preventDefault()
+              handleNavigation('/examples')
             }}
           >
             How to Play
@@ -63,8 +64,8 @@ const Header = () => {
               activeLink === '/lottery' ? 'text-gray-300' : ''
             }`}
             onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/lottery');
+              e.preventDefault()
+              handleNavigation('/lottery')
             }}
           >
             All Lottery
@@ -75,8 +76,8 @@ const Header = () => {
               activeLink === '/contact' ? 'text-gray-300' : ''
             }`}
             onClick={(e) => {
-              e.preventDefault();
-              handleNavigation('/contact');
+              e.preventDefault()
+              handleNavigation('/contact')
             }}
           >
             Contact
@@ -94,17 +95,9 @@ const Header = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               {isOpen ? (
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path fillRule="evenodd" clipRule="evenodd" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M4 5h16M4 12h16M4 19h16"
-                />
+                <path fillRule="evenodd" clipRule="evenodd" d="M4 5h16M4 12h16M4 19h16" />
               )}
             </svg>
           </button>
@@ -129,8 +122,8 @@ const Header = () => {
                 activeLink === '/docs' ? 'text-gray-300' : ''
               }`}
               onClick={(e) => {
-                e.preventDefault();
-                handleNavigation('/docs');
+                e.preventDefault()
+                handleNavigation('/docs')
               }}
             >
               Docs
@@ -141,8 +134,8 @@ const Header = () => {
                 activeLink === '/examples' ? 'text-gray-300' : ''
               }`}
               onClick={(e) => {
-                e.preventDefault();
-                handleNavigation('/examples');
+                e.preventDefault()
+                handleNavigation('/examples')
               }}
             >
               Examples
@@ -153,8 +146,8 @@ const Header = () => {
                 activeLink === '/community' ? 'text-gray-300' : ''
               }`}
               onClick={(e) => {
-                e.preventDefault();
-                handleNavigation('/community');
+                e.preventDefault()
+                handleNavigation('/community')
               }}
             >
               Community
@@ -174,12 +167,18 @@ const Header = () => {
       <div className="container mx-auto px-4 py-10 text-center">
         <h1 className="text-4xl text-white font-bold mb-4">Welcome to DappLottery</h1>
         <p className="text-lg text-gray-300">Play and Win Big with Our Exciting Lottery Games!</p>
-        <button className="mt-6 py-3 px-8 rounded-md bg-pink-500 text-white font-medium hover:bg-pink-600">
-          Create Jackpot
-        </button>
+
+        <div className="flex justify-center">
+          <Link
+            href="/create"
+            className="mt-6 py-3 px-8 rounded-md bg-pink-500 text-white font-medium hover:bg-pink-600"
+          >
+            Create Jackpot
+          </Link>
+        </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
